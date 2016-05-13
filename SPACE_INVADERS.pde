@@ -25,8 +25,8 @@ void draw() {
 
   background (00);
   movePlanet();
+  displayPlanetSecond();
   displayPlanetFirst();
-  displayPlanetSecond()
   movePlanet2();
   stroke (0, G, 0);
   line (width/10, (height/10)*9, (width/10)*9, (height/10)*9);
@@ -60,22 +60,36 @@ void movePlanet2() {
   }
   y_Planet2 = y_Planet2 + planetSize2;
 }
-void displayPlanetFirst(){
-  //if (planetSize
+void displayPlanetFirst() {
+  if (planetSize >= planetSize2) {
+    displayPlanet();
+  } else if (planetSize2 >= planetSize) {
+    displayPlanet2();
+    
+  }
 }
-void displayPlanetSecond (){
-  
+void displayPlanetSecond () {
+  if (planetSize2 <= planetSize) {
+    displayPlanet2();
+  }
+
+else if(planetSize <= planetSize2){
+  displayPlanet();
 }
+}
+
 void displayPlanet() {
   noStroke();
   ellipseMode (CENTER);
-  fill (planetColor);
+  fill (255,0,0);//change back if you dont like. it was planetColor
   ellipse (x_Planet, y_Planet, 10*planetSize, 10*planetSize);
+}
+
+void displayPlanet2() {
   noStroke();
   ellipseMode (CENTER);
   fill (planetColor2);
   ellipse (x_Planet2, y_Planet2, 10*planetSize2, 10*planetSize2);
-  
 }
 
 void dibujarNave(int xpos) {
